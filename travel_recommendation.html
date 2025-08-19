@@ -16,32 +16,44 @@
             <li><a href="travel_recommendation.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li class="search-bar">
-                <input type="text" id="searchInput" placeholder="Enter keyword">
-                <button id="btnSearch">Search</button>
-                <button id="btnReset">Reset</button>
-            </li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
-    <main class="hero">
-        <div class="intro">
-            <h1>Explore the world with Wanderlust Travel</h1>
-            <p>Discover beautiful destinations, temples, and beaches around the globe.</p>
-            <button>Book Now</button>
+<!-- Hero Section -->
+<main class="hero">
+    <div class="intro">
+        <h1>Explore the world with Wanderlust Travel</h1>
+        <p>Discover beautiful destinations, temples, and beaches around the globe.</p>
+        <button id="btnExplore">Explore Destinations</button>
 
-            <!-- Optional social icons -->
-            <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
+        <!-- Optional social icons -->
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-    </main>
+    </div>
+</main>
 
-    <!-- Search results -->
-    <div id="searchResults"></div>
+<!-- Container for destinations + filters (initially hidden) -->
+<div class="explore-container" style="display: none;">
+    <aside class="filter-aside">
+        <h3>Filter by type</h3>
+        <div class="filter-options">
+            <label><input type="checkbox" class="filter" value="beach"> Beach Destinations</label>
+            <label><input type="checkbox" class="filter" value="city"> City Hubs</label>
+            <label><input type="checkbox" class="filter" value="historic"> Historic Sites</label>
+            <label><input type="checkbox" class="filter" value="mountain"> Mountain Views</label>
+        </div>
+    </aside>
+
+    <div id="destinationList" class="destination-list"></div>
+</div>
+
+
+<!-- Search results / Explore results -->
+<div id="searchResults"></div>
 
     <script src="travel_recommendation.js"></script>
 
@@ -57,8 +69,5 @@
         </div>
     </footer>
     
-    
-    
-
 </body>
 </html>

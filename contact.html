@@ -34,16 +34,49 @@
             </div>
             <button type="submit">Submit</button>
         </form>
+
+        <div id="confirmationMessage" style="display:none; margin-top:20px; padding:15px; border-radius:10px; background-color:#e0f7fa; color:#00796b;"></div>
+
     </main>
 
     <script>
         const contactForm = document.getElementById('contactForm');
+        const confirmationMessage = document.getElementById('confirmationMessage'); // new line
+
         contactForm.addEventListener('submit', function(event){
             event.preventDefault();
+
             const userName = document.getElementById('name').value;
-            alert(`Thank you, ${userName}! Your message has been submitted.`);
-            contactForm.reset();
-        });
+            const userEmail = document.getElementById('email').value;
+            const userMessage = document.getElementById('message').value;
+
+            // Show confirmation message instead of alert
+            confirmationMessage.style.display = 'block';
+            confirmationMessage.innerHTML = `
+                <strong>Thank you, ${userName}!</strong><br>
+                Your message has been submitted with the following details:<br>
+                <ul>
+                    <li><strong>Email:</strong> ${userEmail}</li>
+                    <li><strong>Message:</strong> ${userMessage}</li>
+                </ul>
+            `;
+
+        contactForm.reset();
+    });
+
     </script>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Wanderlust Travel</p>
+                <div class="social-icons">
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook">
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram">
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="LinkedIn">  
+                </div>
+            </div>
+        </footer>
+
 </body>
 </html>

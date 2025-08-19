@@ -1,85 +1,110 @@
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-const btnSearch = document.getElementById('btnSearch');
-const btnReset = document.getElementById('btnReset');
+const btnExplore = document.getElementById('btnExplore');
+const destinationList = document.getElementById('destinationList');
+const exploreContainer = document.querySelector('.explore-container');
+const filterCheckboxes = document.querySelectorAll('.filter');
 
-const keywordMap = {
-    beach: 'beaches', beaches: 'beaches',
-    temple: 'temples', temples: 'temples',
-    country: 'countries', countries: 'countries', city:'countries', cities:'countries'
-};
+let allDestinations = [];
 
-const countryTimeZones = {
-    'Australia':'Australia/Sydney',
-    'Japan':'Asia/Tokyo',
-    'Brazil':'America/Sao_Paulo'
-};
-
-function getCountryTime(countryName){
-    const timeZone = countryTimeZones[countryName];
-    if(!timeZone) return '';
-    const options = { timeZone, hour12:true, hour:'numeric', minute:'numeric', second:'numeric' };
-    return new Date().toLocaleTimeString('en-US', options);
+// Fetch JSON data
+async function fetchDestinations() {
+    try {
+        const response = await fetch('travel_recommendation_api.json');
+        const data = await response.json();
+        processDestinations(data);
+    } catch (err) {
+        console.error('Error loading destinations:', err);
+    }
 }
 
-fetch('travel_recommendation_api.json')
-.then(response=>response.json())
-.then(data=>{
-    console.log('Travel data loaded:', data);
+// Flatten JSON data into allDestinations array
+function processDestinations(data) {
+    allDestinations = [];
 
-    function displayResults(keyword){
-        searchResults.innerHTML='';
-        if(!keyword) return;
-
-        const keywordLower = keyword.toLowerCase();
-        const results = [];
-        const category = keywordMap[keywordLower];
-
-        if(category==='countries'){
-            data.countries.forEach(country=>{
-                country.cities.forEach(city=>{
-                    results.push({...city, countryTime:getCountryTime(country.name)});
-                });
+    // Countries/Cities
+    data.countries.forEach(country => {
+        country.cities.forEach(city => {
+            allDestinations.push({
+                name: city.name,
+                imageUrl: city.imageUrl,
+                description: city.description,
+                tags: city.tags || ['city']
             });
-        } else if(category==='temples'){
-            data.temples.forEach(temple=>results.push(temple));
-        } else if(category==='beaches'){
-            data.beaches.forEach(beach=>results.push(beach));
-        } else {
-            // partial matches for any keyword
-            data.countries.forEach(country=>{
-                country.cities.forEach(city=>{
-                    if(city.name.toLowerCase().includes(keywordLower)) results.push({...city, countryTime:getCountryTime(country.name)});
-                });
-            });
-            data.temples.forEach(temple=>{
-                if(temple.name.toLowerCase().includes(keywordLower)) results.push(temple);
-            });
-            data.beaches.forEach(beach=>{
-                if(beach.name.toLowerCase().includes(keywordLower)) results.push(beach);
-            });
-        }
+        });
+    });
 
-        const limitedResults = results.slice(0,2); // show only 2 results per search
-        if(limitedResults.length > 0){
-            limitedResults.forEach(item=>{
-                const div = document.createElement('div');
-                div.className = 'result-item';
-                div.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <img src="${item.imageUrl}" alt="${item.name}">
-                    <p>${item.description}</p>
-                    ${item.countryTime ? `<p class="time">Current local time: ${item.countryTime}</p>` : ''}
-                `;
-                searchResults.appendChild(div);
-            });
-        } else {
-            searchResults.innerHTML = `<p>No results found for "${keyword}".</p>`;
-        }
-    }  
+    // Temples
+    data.temples.forEach(t => {
+        allDestinations.push({
+            name: t.name,
+            imageUrl: t.imageUrl,
+            description: t.description,
+            tags: t.tags || ['historic']
+        });
+    });
 
-    btnSearch.addEventListener('click', ()=>{ displayResults(searchInput.value.trim()); });
-    btnReset.addEventListener('click', ()=>{ searchInput.value=''; searchResults.innerHTML=''; });
+    // Beaches
+    data.beaches.forEach(b => {
+        allDestinations.push({
+            name: b.name,
+            imageUrl: b.imageUrl,
+            description: b.description,
+            tags: b.tags || ['beach']
+        });
+    });
 
-})
-.catch(err=>console.error('Error loading data:',err));
+    // Sort alphabetically by name
+    allDestinations.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+// Render tiles with optional filters
+function renderDestinations() {
+    const activeFilters = Array.from(filterCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+    destinationList.innerHTML = '';
+
+    let filtered = allDestinations;
+    if (activeFilters.length > 0) {
+        filtered = allDestinations.filter(dest =>
+            dest.tags.some(tag => activeFilters.includes(tag))
+        );
+    }
+
+    // Ensure exactly 12 tiles (4x3) by slicing or filling with empty placeholders
+    const tilesToShow = filtered.slice(0, 12);
+
+    tilesToShow.forEach(dest => {
+        const tile = document.createElement('div');
+        tile.classList.add('destination-tile');
+        tile.innerHTML = `
+            <img src="${dest.imageUrl}" alt="${dest.name}">
+            <h4>${dest.name}</h4>
+            <p>${dest.description}</p>
+        `;
+        destinationList.appendChild(tile);
+    });
+
+    // Fill remaining tiles with invisible placeholders if fewer than 12
+    const remaining = 12 - tilesToShow.length;
+    for (let i = 0; i < remaining; i++) {
+        const placeholder = document.createElement('div');
+        placeholder.classList.add('destination-tile');
+        placeholder.style.visibility = 'hidden';
+        destinationList.appendChild(placeholder);
+    }
+}
+
+// Show explore container and render destinations when button clicked
+btnExplore.addEventListener('click', () => {
+    exploreContainer.style.display = 'flex'; // show container
+    renderDestinations(); // render all destinations immediately
+});
+
+// Add event listeners to checkboxes for real-time filtering
+filterCheckboxes.forEach(cb => {
+    cb.addEventListener('change', renderDestinations);
+});
+
+// Initialize
+fetchDestinations();

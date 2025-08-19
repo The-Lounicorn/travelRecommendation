@@ -6,13 +6,15 @@
         "cities": [
           {
             "name": "Sydney, Australia",
-            "imageUrl": "enter_your_image_for_sydney.jpg",
-            "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
+            "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUI7WzY5xAKvGzgRhPKQJJyDblnmxb3GEWQ&s",
+            "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge.",
+            "tags": ["city"]
           },
           {
             "name": "Melbourne, Australia",
-            "imageUrl": "enter_your_image_for_melbourne.jpg",
-            "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
+            "imageUrl": "https://live.staticflickr.com/834/28708042627_4a7f0d721a_b.jpg",
+            "description": "A cultural hub famous for its art, food, and diverse neighborhoods.",
+            "tags": ["city", "mountain"]
           }
         ]
       },
@@ -22,13 +24,15 @@
         "cities": [
           {
             "name": "Tokyo, Japan",
-            "imageUrl": "enter_your_image_for_tokyo.jpg",
-            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+            "imageUrl": "https://live.staticflickr.com/8265/28350408591_33df20c0d7_b.jpg",
+            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture.",
+            "tags": ["city"]
           },
           {
             "name": "Kyoto, Japan",
-            "imageUrl": "enter_your_image_for_kyoto.jpg",
-            "description": "Known for its historic temples, gardens, and traditional tea houses."
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/The_Golden_Castle_of_Kyoto%2C_Japan.jpg",
+            "description": "Known for its historic temples, gardens, and traditional tea houses.",
+            "tags": ["historic"]
           }
         ]
       },
@@ -38,13 +42,33 @@
         "cities": [
           {
             "name": "Rio de Janeiro, Brazil",
-            "imageUrl": "enter_your_image_for_rio.jpg",
-            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
+            "imageUrl": "https://live.staticflickr.com/6198/6054862618_805ac4da47_b.jpg",
+            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks.",
+            "tags": ["city", "beach", "mountain"]
           },
           {
             "name": "São Paulo, Brazil",
-            "imageUrl": "enter_your_image_for_sao-paulo.jpg",
-            "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
+            "imageUrl": "https://liveandletsfly.com/wp-content/uploads/2021/08/Sao-Paulo-Trip-Report.jpeg",
+            "description": "The financial hub with diverse culture, arts, and a vibrant nightlife.",
+            "tags": ["city"]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Vietnam",
+        "cities": [
+          {
+            "name": "Hanoi, Vietnam",
+            "imageUrl": "https://storage.needpix.com/rsynced_images/hanoi-3609871_1280.jpg",
+            "description": "Vietnam’s capital, known for its centuries-old architecture and vibrant street markets.",
+            "tags": ["city", "historic", "mountain"]
+          },
+          {
+            "name": "Ho Chi Minh City, Vietnam",
+            "imageUrl": "https://media.lex.dk/media/199716/standard_compressed_HCMC.jpg",
+            "description": "A bustling southern city famous for its French colonial landmarks and lively street food scene.",
+            "tags": ["city"]
           }
         ]
       }
@@ -53,28 +77,32 @@
       {
         "id": 1,
         "name": "Angkor Wat, Cambodia",
-        "imageUrl": "enter_your_image_for_angkor-wat.jpg",
-        "description": "A UNESCO World Heritage site and the largest religious monument in the world."
+        "imageUrl": "https://cdn12.picryl.com/photo/2016/12/31/angkor-wat-temple-amazing-seven-wonders-religion-105791-1024.jpg",
+        "description": "A UNESCO World Heritage site and the largest religious monument in the world.",
+        "tags": ["historic"]
       },
       {
         "id": 2,
         "name": "Taj Mahal, India",
-        "imageUrl": "enter_your_image_for_taj-mahal.jpg",
-        "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg",
+        "description": "An iconic symbol of love and a masterpiece of Mughal architecture.",
+        "tags": ["historic"]
       }
     ],
     "beaches": [
       {
         "id": 1,
         "name": "Bora Bora, French Polynesia",
-        "imageUrl": "enter_your_image_for_bora-bora.jpg",
-        "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/DL2A_Four_Seasons_Bora_Bora.jpg",
+        "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows.",
+        "tags": ["beach"]
       },
       {
         "id": 2,
         "name": "Copacabana Beach, Brazil",
-        "imageUrl": "enter_your_image_for_copacabana.jpg",
-        "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbpG_7N3gOnEBvrlT1okohqEYVtIkGtBLE8w&s",
+        "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views.",
+        "tags": ["beach"]
       }
     ]
   }
