@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wanderlust Travel</title>
+    <link rel="stylesheet" href="travel_recommendation.css">
+    <!-- Optional: Font Awesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><h1>Wanderlust Travel</h1></div>
+        <ul class="nav-links">
+            <li><a href="travel_recommendation.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li class="search-bar">
+                <input type="text" id="searchInput" placeholder="Enter keyword">
+                <button id="btnSearch">Search</button>
+                <button id="btnReset">Reset</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="intro">
+            <h1>Explore the world with Wanderlust Travel</h1>
+            <p>Discover beautiful destinations, temples, and beaches around the globe.</p>
+            <button>Book Now</button>
+
+            <!-- Optional social icons -->
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Search results -->
+    <div id="searchResults"></div>
+
+    <script src="travel_recommendation.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Wanderlust Travel</p>
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="LinkedIn">  
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+
+</body>
+</html>

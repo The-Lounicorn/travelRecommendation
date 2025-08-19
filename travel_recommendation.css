@@ -1,0 +1,263 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Reset and basic body styling */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+    margin: 0;
+    font-family: 'Lato', sans-serif; /* body text */
+}
+
+/* Headings styling */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* headings */
+    margin: 0;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    height: 100vh; /* full viewport height */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Buttons */
+.hero button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff7f50;
+    color: white;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #ff6347;
+}
+
+/* Social media icons */
+.social-icons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+/* Placeholder for search results */
+#searchResults {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* About Us page container */
+.about-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.company-info h2,
+.team h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.company-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Team members section */
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; /* center the tiles horizontally */
+}
+
+.member {
+    flex: 1 1 250px; /* each tile takes at least 250px, can grow */
+    max-width: 250px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.member h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.member p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Contact Us page container */
+.contact-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.contact-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #f0f0f0;
+    padding: 15px 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* vertically center both items */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-content .social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-content .social-icons img {
+    height: 24px;
+    width: 24px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
