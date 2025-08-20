@@ -95,11 +95,15 @@ function renderDestinations() {
     }
 }
 
-// Show explore container and render destinations when button clicked
+// Show explore container, render destinations, and scroll into view
 btnExplore.addEventListener('click', () => {
     exploreContainer.style.display = 'flex'; // show container
     renderDestinations(); // render all destinations immediately
+    
+    // Scroll smoothly to the explore section
+    exploreContainer.scrollIntoView({ behavior: 'smooth' });
 });
+
 
 // Add event listeners to checkboxes for real-time filtering
 filterCheckboxes.forEach(cb => {
