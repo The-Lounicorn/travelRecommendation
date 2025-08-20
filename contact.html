@@ -13,31 +13,34 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #fff8e1);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* Beach image on the body */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+  z-index: -1;
+}
 
-    header {
-      background: linear-gradient(135deg, #0288d1, #26c6da);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+/* Header with solid navbar color */
+header.header {
+  color: dark-gray;
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 5px;
-    }
+header.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
 
-    header p {
-      font-size: 1.1rem;
-    }
+header.header p {
+  font-size: 1.2rem;
+}
+
 
     main {
       flex: 1;
@@ -152,7 +155,7 @@
             </ul>
           </nav>
 
-  <header>
+  <header class="header">
     <h1>Contact Wanderlust Travel</h1>
     <p>We’d love to hear from you — let’s plan your next adventure!</p>
   </header>
