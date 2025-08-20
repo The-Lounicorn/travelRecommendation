@@ -429,6 +429,62 @@ form button:hover {
     gap: 15px;
 }
 
+body.about-page {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80') 
+        center/cover no-repeat fixed;
+    color: #333; /* fallback text color */
+}
+
+/* Optional: add subtle text shadows for readability */
+.about-container h2,
+.about-container p {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.member {
+    flex: 1 1 250px;
+    max-width: 250px;
+    background-color: rgba(255, 255, 255, 0.9); /* slightly transparent for beach background */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* stronger, softer shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35); /* more dramatic hover shadow */
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.member img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+
+.company-info h2,
+.team h2 {
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+    color: #0077b6;
+}
+
+.company-info p {
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    color: #333;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1200px) {
     .destination-list {
