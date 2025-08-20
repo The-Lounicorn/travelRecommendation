@@ -5,6 +5,11 @@ const filterCheckboxes = document.querySelectorAll('.filter');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
+// Navbar search elements
+const searchInput = document.getElementById('destinationSearch');
+const searchBtn = document.getElementById('searchBtn');
+const resetBtn = document.getElementById('resetBtn');
+
 let allDestinations = [];
 
 // Fetch JSON data
@@ -29,7 +34,8 @@ function processDestinations(data) {
                 name: city.name,
                 imageUrl: city.imageUrl,
                 description: city.description,
-                tags: city.tags || ['city']
+                tags: city.tags || ['city'],
+                country: country.name
             });
         });
     });
@@ -59,19 +65,19 @@ function processDestinations(data) {
 }
 
 // Render tiles with optional filters
-function renderDestinations() {
+function renderDestinations(filteredList = allDestinations) {
     const activeFilters = Array.from(filterCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
 
-    destinationList.innerHTML = '';
-
-    let filtered = allDestinations;
+    let filtered = filteredList;
     if (activeFilters.length > 0) {
-        filtered = allDestinations.filter(dest =>
+        filtered = filteredList.filter(dest =>
             dest.tags.some(tag => activeFilters.includes(tag))
         );
     }
+
+    destinationList.innerHTML = '';
 
     // Ensure exactly 12 tiles (4x3) by slicing or filling with empty placeholders
     const tilesToShow = filtered.slice(0, 12);
@@ -99,22 +105,56 @@ function renderDestinations() {
 
 // Show explore container, render destinations, and scroll into view
 btnExplore.addEventListener('click', () => {
-    exploreContainer.style.display = 'flex'; // show container
-    renderDestinations(); // render all destinations immediately
-    
-    // Scroll smoothly to the explore section
+    exploreContainer.style.display = 'flex';
+    renderDestinations(); 
     exploreContainer.scrollIntoView({ behavior: 'smooth' });
 });
 
-
 // Add event listeners to checkboxes for real-time filtering
 filterCheckboxes.forEach(cb => {
-    cb.addEventListener('change', renderDestinations);
+    cb.addEventListener('change', () => renderDestinations());
 });
 
+// Hamburger menu toggle
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-  });
+});
+
+// SEARCH FUNCTIONALITY
+
+function searchDestinations() {
+    const query = searchInput.value.trim().toLowerCase();
+    if (!query) {
+        renderDestinations(); // show all if empty
+        return;
+    }
+
+    const results = allDestinations.filter(dest => 
+        dest.tags.some(tag => tag.toLowerCase().includes(query)) ||
+        (dest.country && dest.country.toLowerCase().includes(query)) ||
+        dest.name.toLowerCase().includes(query)
+    );
+
+    // Ensure explore container is visible
+    exploreContainer.style.display = 'flex';
+    renderDestinations(results);
+
+    // Scroll smoothly to the destination list
+    exploreContainer.scrollIntoView({ behavior: 'smooth' });
+
+
+    renderDestinations(results);
+}
+
+// Event listeners for search
+searchBtn.addEventListener('click', searchDestinations);
+resetBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    renderDestinations();
+});
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') searchDestinations();
+});
 
 // Initialize
 fetchDestinations();
