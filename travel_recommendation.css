@@ -25,17 +25,16 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0f0f0;
     padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: #0a809e;
+    color: white;
+    position: relative; /* needed for absolute positioning */
 }
 
 .navbar .logo h1 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #f3f3f3;
 }
 
 .navbar .nav-links {
@@ -50,6 +49,38 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: #90e0ef;
+}
+
+/* Hamburger button hidden by default */
+.hamburger {
+    display: none; /* hide on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
 }
 
 /* Hero Section */
@@ -321,7 +352,8 @@ form button:hover {
     flex-direction: column;
     align-items: center;
     transition: transform 0.2s;
-    height: 300px; /* uniform tile height */
+    height: auto;
+    min-height: 250px;
 }
 
 .destination-tile:hover {
@@ -350,29 +382,26 @@ form button:hover {
 /* Explore Destinations Container */
 .explore-container {
     display: flex;
-    flex-direction: column; /* stack filters on top of tiles */
+    flex-direction: column;
     gap: 20px;
     margin: 20px auto;
     max-width: 1200px;
 }
 
-/* Explore Destinations Tiles using CSS Grid */
 .destination-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* space between tiles */
-    flex: 3;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-/* Filters above tiles in 2x2 grid */
 .filter-aside {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     background-color: #f9f9f9;
     padding: 15px;
     border-radius: 10px;
-    color: #333; /* make text visible */
+    color: #333;
     font-weight: bold;
 }
 
@@ -400,7 +429,13 @@ form button:hover {
     gap: 15px;
 }
 
-/* Responsive for smaller screens */
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .destination-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 900px) {
     .explore-container {
         flex-direction: column;
@@ -408,43 +443,9 @@ form button:hover {
     }
 
     .destination-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+        grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         gap: 20px;
-    }
-    
-    .destination-tile {
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.2s;
-        height: 300px;
-        color: #333; /* ensure text is visible */
-    }
-    
-    .destination-tile img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
-    
-    .destination-tile h4 {
-        font-size: 18px;
-        margin: 5px 0;
-        color: #333;
-    }
-    
-    .destination-tile p {
-        font-size: 14px;
-        color: #555;
     }
 
     .filter-aside {
@@ -453,34 +454,31 @@ form button:hover {
     }
 }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .destination-list {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* hide menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #0a809e;
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 8px 8px;
     }
-}
 
-@media (max-width: 900px) {
-    .destination-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    .nav-links.active {
+        display: flex; /* show menu when hamburger clicked */
+    }
+
+    .hamburger {
+        display: flex; /* show hamburger only on small screens */
     }
 }
 
 @media (max-width: 600px) {
     .destination-list {
-        grid-template-columns: 1fr; /* single column on very small screens */
+        grid-template-columns: 1fr;
     }
 }
 
-/* Tile adjustments for responsive sizes */
-.destination-tile {
-    height: auto; /* allow height to adjust with content */
-    min-height: 250px; /* prevent tiles from getting too small */
-}
-
-.destination-tile img {
-    height: 150px; /* keep image consistent */
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}

@@ -2,6 +2,8 @@ const btnExplore = document.getElementById('btnExplore');
 const destinationList = document.getElementById('destinationList');
 const exploreContainer = document.querySelector('.explore-container');
 const filterCheckboxes = document.querySelectorAll('.filter');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
 let allDestinations = [];
 
@@ -109,6 +111,10 @@ btnExplore.addEventListener('click', () => {
 filterCheckboxes.forEach(cb => {
     cb.addEventListener('change', renderDestinations);
 });
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
 
 // Initialize
 fetchDestinations();
